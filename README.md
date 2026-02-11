@@ -34,7 +34,12 @@ server_name zabbix-dz.com;
 systemctl restart zabbix-server zabbix-agent nginx php7.4-fpm
 systemctl enable zabbix-server zabbix-agent nginx php7.4-fpm
 ```
+
+![StatusZBBX](./img/2.PNG)
+
 5. Выполните все необходимые команды для установки Zabbix Server и Zabbix Web Server.
+
+![WebAuth](./img/3.PNG)
 
 #### Требования к результатам 
 1. Прикрепите в файл README.md скриншот авторизации в админке.
