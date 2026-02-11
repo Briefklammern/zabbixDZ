@@ -11,7 +11,9 @@
 apt install postgresql
 ```
 ![PostgreSQL](./img/1.PNG)
+
 4. Пользуясь конфигуратором команд с официального сайта, составьте набор команд для установки последней версии Zabbix с поддержкой PostgreSQL и Nginx.
+
 ```
 wget https://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix-release/zabbix-release_latest_6.0+debian11_all.deb
 dpkg -i zabbix-release_latest_6.0+debian11_all.deb
@@ -22,7 +24,7 @@ sudo -u postgres createdb -O zabbix zabbix
 zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix
 ```
 Раскомментировать строку DBPassword и указать пароль от БД в файле /etc/zabbix/zabbix_server.conf
-Отредактировать файл /etc/zabbix/nginx.conf раскомментировать и настройте директивы 'listen' и 'server_name'.
+Отредактировать файл /etc/zabbix/nginx.conf раскомментировать и настроить директивы 'listen' и 'server_name'.
 ```
 listen 8080;
 server_name zabbix-dz.com;
