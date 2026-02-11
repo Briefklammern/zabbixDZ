@@ -7,8 +7,32 @@
 #### Процесс выполнения
 1. Выполняя ДЗ, сверяйтесь с процессом отражённым в записи лекции.
 2. Установите PostgreSQL. Для установки достаточна та версия, что есть в системном репозитороии Debian 11.
-3. Пользуясь конфигуратором команд с официального сайта, составьте набор команд для установки последней версии Zabbix с поддержкой PostgreSQL и Apache.
-4. Выполните все необходимые команды для установки Zabbix Server и Zabbix Web Server.
+```
+apt install postgresql
+```
+![PostgreSQL](./img/1.png)
+4. Пользуясь конфигуратором команд с официального сайта, составьте набор команд для установки последней версии Zabbix с поддержкой PostgreSQL и Apache.
+```
+wget https://repo.zabbix.com/zabbix/6.0/debian/pool/main/z/zabbix-release/zabbix-release_latest_6.0+debian11_all.deb
+dpkg -i zabbix-release_latest_6.0+debian11_all.deb
+apt update
+apt install zabbix-server-pgsql zabbix-frontend-php php7.4-pgsql zabbix-nginx-conf zabbix-sql-scripts zabbix-agent
+sudo -u postgres createuser --pwprompt zabbix
+sudo -u postgres createdb -O zabbix zabbix
+zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix
+```
+Раскомментировать строку DBPassword и указать пароль от БД в файле /etc/zabbix/zabbix_server.conf
+Отредактировать файл /etc/zabbix/nginx.conf раскомментировать и настройте директивы 'listen' и 'server_name'.
+```
+listen 8080;
+server_name zabbix-dz.com;
+```
+Запустить процессы Zabbix сервера и агента и настроить их запуск при загрузке ОС.
+```
+systemctl restart zabbix-server zabbix-agent nginx php7.4-fpm
+systemctl enable zabbix-server zabbix-agent nginx php7.4-fpm
+```
+5. Выполните все необходимые команды для установки Zabbix Server и Zabbix Web Server.
 
 #### Требования к результатам 
 1. Прикрепите в файл README.md скриншот авторизации в админке.
