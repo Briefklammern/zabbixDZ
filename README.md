@@ -73,6 +73,6 @@ git push
 6. Приложите в файл README.md текст использованных команд в GitHub
 ```
 git add .
-dit commit -am 'Task1'
+dit commit -am 'Task2'
 git push
 ```
