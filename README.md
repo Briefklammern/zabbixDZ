@@ -45,6 +45,11 @@ systemctl enable zabbix-server zabbix-agent nginx php7.4-fpm
 1. Прикрепите в файл README.md скриншот авторизации в админке.
 2. Приложите в файл README.md текст использованных команд в GitHub.
 
+```
+git add .
+dit commit -am 'Task1'
+git push
+```
 ---
 
 ### Задание 2 
@@ -66,3 +71,8 @@ systemctl enable zabbix-server zabbix-agent nginx php7.4-fpm
 5. Приложите в файл README.md скриншот раздела Monitoring > Latest data для обоих хостов, где видны поступающие от агентов данные.
 ![Data](./img/6.PNG)
 6. Приложите в файл README.md текст использованных команд в GitHub
+```
+git add .
+dit commit -am 'Task1'
+git push
+```
